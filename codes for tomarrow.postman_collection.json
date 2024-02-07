@@ -1,0 +1,176 @@
+{
+	"info": {
+		"_postman_id": "1442dc3e-db18-47ad-bd84-caa0832f856a",
+		"name": "codes for tomarrow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20408746"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"admin@codesfortomorrow.com\",\r\n    \"password\" : \"Admin123!@#\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10009/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\"user_id\" :\"admin\", \"category_name\": \"wooden\"}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10009/user/category",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:10009/user/categories?user_id=admin",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"categories"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_category",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId"
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId"
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

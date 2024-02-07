@@ -1,0 +1,41 @@
+create database codes_for_tomarrow;
+use codes_for_tomarrow;
+
+
+
+CREATE TABLE category (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL
+);
+
+
+    CREATE TABLE service (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id VARCHAR(45),
+    price VARCHAR(255),
+    service_name VARCHAR(255) NOT NULL,
+    type ENUM('Normal', 'VIP') NOT NULL
+);
+
+CREATE TABLE service_price (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    service_id INT,
+    duration INT NOT NULL,
+    price VARCHAR(45),
+    type ENUM('Hourly', 'Weekly', 'Monthly') NOT NULL
+);
+
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    secret_key VARCHAR(255) NOT NULL
+);
+
+
+
+INSERT INTO user (user_name, email, user_id, password, secret_key) 
+VALUES ('admin', 'admin@codesfortomorrow.com', 'admin', 'Admin123!@#', 'secretkey123');
