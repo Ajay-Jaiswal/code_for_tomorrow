@@ -47,7 +47,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n    {\"user_id\" :\"admin\", \"category_name\": \"wooden\"}\r\n",
+					"raw": "\r\n    {\"user_id\" :\"admin\", \"category_name\": \"spiral\"}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -112,7 +112,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user_id\" : \"admin\"\r\n}",
+					"raw": "{\r\n    \"user_id\" : \"admin\",\r\n    \"category_name\" : \"Box\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,7 +133,7 @@
 					"variable": [
 						{
 							"key": "categoryId",
-							"value": "1"
+							"value": "3"
 						}
 					]
 				}
@@ -143,7 +143,7 @@
 		{
 			"name": "delete_category",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "x-api-key",
@@ -151,6 +151,15 @@
 						"type": "text"
 					}
 				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"user_id\" : \"admin\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:10009/user/category/:categoryId",
 					"host": [
@@ -165,7 +174,179 @@
 					"variable": [
 						{
 							"key": "categoryId",
-							"value": ""
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"admin\",\r\n\"price\": \"500\",\r\n\"service_name\": \"timepass\",\r\n\"type\" : \"Normal\"\r\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId/service",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId",
+						"service"
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_services",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId/services?user_id=admin",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId",
+						"services"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "admin"
+						}
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update_services",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"admin\",\r\n    \"price\":\"100\",\r\n    \"service_name\":\"timepass 2\",\r\n    \"type\" :\"VIP\"\r\n    } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId/service/:serviceId",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId",
+						"service",
+						":serviceId"
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": "4"
+						},
+						{
+							"key": "serviceId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_services",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGNvZGVzZm9ydG9tb3Jyb3cuY29tIiwiaWF0IjoxNzA3MjcyMTc2fQ.nxHEmwM-E9TWEBNgyLcvuHcBhf8XJ27JnOI2OSaB5cY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:10009/user/category/:categoryId/service/:serviceId?user_id=admin",
+					"host": [
+						"localhost"
+					],
+					"port": "10009",
+					"path": [
+						"user",
+						"category",
+						":categoryId",
+						"service",
+						":serviceId"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "admin"
+						}
+					],
+					"variable": [
+						{
+							"key": "categoryId",
+							"value": "3"
+						},
+						{
+							"key": "serviceId",
+							"value": "1"
 						}
 					]
 				}

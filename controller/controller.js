@@ -96,6 +96,12 @@ module.exports.delete_category = async function(req,res){
     const categoryId = req.params.categoryId
     const {user_id} = req.body
 
+    const get_category_data = await db.get_where_universal_data(table.category,{id: categoryId})
+    
+    if(get_category_data.length == 0){
+      return response_format.error_for_user(res,"categoryId does'nt exist")
+    }
+
     const update_category = await db.delete_universal_data(table.category,{id : categoryId})
     return response_format.success_for_user(res,[],"category updated successfully")
 
@@ -103,3 +109,98 @@ module.exports.delete_category = async function(req,res){
     return response_format.server_error(res,err.message)
   }
 }
+
+
+
+module.exports.create_services = async function(req,res){
+  try{
+    const {user_id,price,service_name,type} = req.body
+    const categoryId = req.params.categoryId
+    const get_category_data = await db.get_where_universal_data(table.category,{id: categoryId})
+    if(get_category_data.length == 0){
+      return response_format.error_for_user(res,"categoryId does'nt exist")
+    }
+    
+    const create_category_in_table = await db.create_universal_data(table.service,{category_id : categoryId, 
+      price : price,
+      service_name : service_name,
+      type : type})
+
+    return response_format.created_success_for_user(res,[],"Service data added successfully.")
+
+  }catch(err){
+    return response_format.server_error(res,err.message)
+  }
+}
+
+
+module.exports.get_services = async function(req,res){
+  try{
+    const user_id = req.query.user_id
+
+    const categoryId = req.params.categoryId
+    const get_services_data = await db.get_where_universal_data(table.service,{category_id: categoryId})
+
+    return response_format.success_for_user(res,get_services_data,"Service data successfully.")
+
+  }catch(err){
+    return response_format.server_error(res,err.message)
+  }
+}
+
+
+
+module.exports.update_services = async function(req,res){
+  try{
+    const {user_id,price,service_name,type} = req.body
+    const categoryId = req.params.categoryId
+    const serviceId = req.params.serviceId
+
+    
+    const get_category_data = await db.get_where_universal_data(table.category,{id: categoryId})
+    if(get_category_data.length == 0){
+      return response_format.error_for_user(res,"categoryId does'nt exist")
+    }
+    
+
+    const get_services_data = await db.get_where_universal_data(table.service,{id: serviceId})
+    if(get_services_data.length == 0){
+      return response_format.error_for_user(res,"service Id does'nt exist")
+    }
+    const create_category_in_table = await db.update_universal_data(table.service,{category_id : categoryId, 
+      price : price,
+      service_name : service_name,
+      type : type},{id : serviceId})
+
+    return response_format.created_success_for_user(res,[],"Service data updated successfully.")
+  }catch(err){
+    return response_format.server_error(res,err.message)
+  }
+}
+
+
+
+module.exports.delete_services = async function(req,res){
+  try{
+    const {user_id} = req.body
+    const categoryId = req.params.categoryId
+    const serviceId = req.params.serviceId
+    const get_category_data = await db.get_where_universal_data(table.category,{id: categoryId})
+    if(get_category_data.length == 0){
+      return response_format.error_for_user(res,"categoryId does'nt exist")
+    }
+    
+    const get_services_data = await db.get_where_universal_data(table.service,{id: serviceId})
+    if(get_services_data.length == 0){
+      return response_format.error_for_user(res,"service Id does'nt exist")
+    }
+
+
+    const create_category_in_table = await db.delete_universal_data(table.service,{id : serviceId})
+
+    return response_format.created_success_for_user(res,[],"Service data updated successfully.")
+  }catch(err){
+    return response_format.server_error(res,err.message)
+  }
+}
+
